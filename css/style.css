@@ -1,7 +1,15 @@
+
 .home{
     background: url("../images/background-purple.jpg");
     background-size: cover;
     height: 100vh;
+}
+.home .text-container{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
 }
 .nav{
     height: 50px;
@@ -26,4 +34,14 @@
 .nav ul li a{
     color:antiquewhite;
     padding: 4px;
+}
+.about .about-content{
+    margin: 150px auto 0 auto;
+    width: 500px;
+}
+.about .about-content h1{
+    text-align: center;
+}
+.about .about-content p{
+    text-align: justify;
 }
