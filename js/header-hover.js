@@ -10,15 +10,13 @@ var color2_h1 = [102, 51, 153]; // rebeccapurple
 var color1_h2 = [240, 255, 255]; // azure
 var color2_h2 = [102, 51, 153]; // rebeccapurple
 
-// Get the computed styles for h1 and h2
-var style_h1 = window.getComputedStyle(h1);
-var style_h2 = window.getComputedStyle(h2);
+var style_h1 = window.getComputedStyle(h1); // Get the computed style of the h1 element
+var style_h2 = window.getComputedStyle(h2); // Get the computed style of the h2 element
 
 // Define the minimum and maximum font sizes for h1 and h2
-// Parse the font size from the computed styles and convert it to a number
-var maxFontSize_h1 = parseFloat(style_h1.fontSize); 
-var minFontSize_h1 = maxFontSize_h1 / 1.25; 
-var maxFontSize_h2 = parseFloat(style_h2.fontSize); 
+var maxFontSize_h1 = parseFloat(style_h1.fontSize);
+var minFontSize_h1 = maxFontSize_h1 / 1.25;
+var maxFontSize_h2 = parseFloat(style_h2.fontSize);
 var minFontSize_h2 = maxFontSize_h2 / 1.25;
 
 // Calculate the maximum distance (diagonal of the viewport)
@@ -26,7 +24,7 @@ var maxDistance = Math.sqrt(window.innerWidth * window.innerWidth + window.inner
 
 // Add a mousemove event listener to the document
 document.addEventListener('mousemove', function(e) {
-    // Calculate the distance between the cursor and the center of the h1 and h2 elements
+    // Calculate the distance between the cursor and the center of the h1 element
     var rect1 = h1.getBoundingClientRect();
     var x1 = rect1.left + rect1.width / 2;
     var y1 = rect1.top + rect1.height / 2;
@@ -34,6 +32,7 @@ document.addEventListener('mousemove', function(e) {
     var dy1 = e.clientY - y1;
     var distance1 = Math.sqrt(dx1 * dx1 + dy1 * dy1);
 
+    // Calculate the distance between the cursor and the center of the h2 element
     var rect2 = h2.getBoundingClientRect();
     var x2 = rect2.left + rect2.width / 2;
     var y2 = rect2.top + rect2.height / 2;
