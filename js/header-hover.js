@@ -1,14 +1,40 @@
 // Select the h1 and h2 elements
-var h1 = document.querySelector('.home .text-container h1');
-var h2 = document.querySelector('.home .text-container h2');
+var h1 = document.querySelector('.home .text-container h1 a');
+var h2 = document.querySelector('.home .text-container h2 a');
 
 // Define the RGB values of the colors for h1
 var color1_h1 = [240, 255, 255]; // azure
-var color2_h1 = [102, 51, 153]; // rebeccapurple
+var color2_h1 = [171, 153, 204]; // rebeccapurple
+var hoverColor_h1 = [250, 235, 215]; // antiquewhite
 
 // Define the RGB values of the colors for h2
 var color1_h2 = [240, 255, 255]; // azure
-var color2_h2 = [102, 51, 153]; // rebeccapurple
+var color2_h2 = [171, 153, 204]; // rebeccapurple
+var hoverColor_h2 = [250, 235, 215]; // antiquewhite
+
+// Add a flag to indicate whether the mouse is hovering over the h1 element
+var isHoveringOverH1 = false;
+var isHoveringOverH2 = false;
+
+// Add mouseover and mouseout event listeners to h1
+h1.addEventListener('mouseover', function() {
+    h1.style.color = 'rgb(' + hoverColor_h1 + ')';
+    isHoveringOverH1 = true;
+});
+h1.addEventListener('mouseout', function() {
+    h1.style.color = 'rgb(' + color1_h1 + ')';
+    isHoveringOverH1 = false;
+});
+
+// Add mouseover and mouseout event listeners to h2
+h2.addEventListener('mouseover', function() {
+    h2.style.color = 'rgb(' + hoverColor_h2 + ')';
+    isHoveringOverH2 = true;
+});
+h2.addEventListener('mouseout', function() {
+    h2.style.color = 'rgb(' + color1_h2 + ')';
+    isHoveringOverH2 = false;
+});
 
 var style_h1 = window.getComputedStyle(h1); // Get the computed style of the h1 element
 var style_h2 = window.getComputedStyle(h2); // Get the computed style of the h2 element
@@ -59,8 +85,12 @@ document.addEventListener('mousemove', function(e) {
     var fontSize_h2 = minFontSize_h2 + (1 - ratio2) * (maxFontSize_h2 - minFontSize_h2);
 
     // Set the color and font size of the h1 and h2 elements
-    h1.style.color = 'rgb(' + color_h1 + ')';
+    if (!isHoveringOverH1) { // Only change the color if the mouse is not hovering over h1
+        h1.style.color = 'rgb(' + color_h1 + ')';
+    }
     h1.style.fontSize = fontSize_h1 + 'px';
-    h2.style.color = 'rgb(' + color_h2 + ')';
+    if (!isHoveringOverH2) { // Only change the color if the mouse is not hovering over h2
+        h2.style.color = 'rgb(' + color_h2 + ')';
+    }
     h2.style.fontSize = fontSize_h2 + 'px';
 });
